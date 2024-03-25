@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        char continuar;
+
+        do {
+            int populacaoA;
+            double taxaCrescimentoA;
+            do {
+                System.out.print("Informe a população do país A: ");
+                populacaoA = scanner.nextInt();
+                if (populacaoA <= 0) {
+                    System.out.println("A população deve ser um número positivo.");
+                }
+            } while (populacaoA <= 0);
+
+            do {
+                System.out.print("Informe a taxa de crescimento do país A: ");
+                taxaCrescimentoA = scanner.nextDouble();
+                if (taxaCrescimentoA <= 0) {
+                    System.out.println("A taxa de crescimento deve ser um número positivo.");
+                }
+            } while (taxaCrescimentoA <= 0);
+            taxaCrescimentoA /= 100;
+            int populacaoB;
+            double taxaCrescimentoB;
+            do {
+                System.out.print("Informe a população do país B: ");
+                populacaoB = scanner.nextInt();
+                if (populacaoB <= 0) {
+                    System.out.println("A população deve ser um número positivo.");
+                }
+            } while (populacaoB <= 0);
+            do {
+                System.out.print("Informe a taxa de crescimento do país B: ");
+                taxaCrescimentoB = scanner.nextDouble();
+                if (taxaCrescimentoB <= 0) {
+                    System.out.println("A taxa de crescimento deve ser um número positivo.");
+                }
+            } while (taxaCrescimentoB <= 0);
+            taxaCrescimentoB /= 100;
+            int anos = 0;
+            while (populacaoA < populacaoB) {
+                populacaoA += populacaoA * taxaCrescimentoA;
+                populacaoB += populacaoB * taxaCrescimentoB;
+                anos++;
+            }
+            System.out.println("O número de anos necessários para que a população do pais A ultrapasse ou iguale a população do país B é: " + anos);
+            System.out.print("Deseja realizar outra operação? (S/N): ");
+            continuar = scanner.next().charAt(0);
+        } while (continuar == 'S' || continuar == 's');
+        scanner.close();
+    }
+}
